@@ -7,21 +7,22 @@ void MenuPrin(){
  printf("\t\t\t--> 3  - WithDraw balance\n");
  printf("\t\t\t--> 4  - Check Balance\n");
  printf("\t\t\t--> 5  - Account Holder Info's \n");
- printf("\t\t\t--> 6  - Exit\n");
+ printf("\t\t\t--> 6  - List of The Customers(Clients)\n");
+ printf("\t\t\t--> 7 - Exit\n");
 
 
 }
 struct AccountInfo{
     char FirstName[100];
     char LastName[100];        // Account info contains all elements that we need to create an account !!
-    char CIN [12];
+    char CIN [50];
     int Balance , Diposit , WithDraw;
-
-
 }Account;
 
 
 int AccCreation(){
+    FILE *fPointer;
+    fPointer = fopen("List.txt","w");
         // Declaration of a Function that help us to give the user Steps to create an account
     printf("\t -First Name of account holder              : ");
     scanf(" %s",&Account.FirstName);
@@ -41,6 +42,9 @@ int AccCreation(){
             printf("\nAccount has been created successfully ! \n\n");
         }
         }
+
+        fprintf(fPointer,"the account under name %s %s ID %s have %d DH\n",Account.FirstName,Account.LastName,Account.CIN,Account.Balance);
+         fclose(fPointer);
 }
 int DipositBalance(){
     printf("\tEnter deposit amount ( DH ) :");
@@ -72,9 +76,6 @@ int WithDrawBalance(){
             printf("--> You Have Now %d DH on your Account !\n",Account.Balance);
             printf("------------------------------------------------------------------\n\n");
         }
-
-
-
 }
 
 
@@ -91,6 +92,22 @@ int Details() {
     printf("께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께\n");
 }
 
+int Customers(){
+    printf("께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께");
+    printf("\t\tThe List Of Customers (clients) !: \n");
+
+    FILE *fPointer;
+    char display[150];
+    fPointer = fopen("List.txt","r");
+    while(fgets(display,150,fPointer)){
+        printf("%s",display);
+
+    }
+    fclose(fPointer);
+    printf("께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께\n");
+
+
+}
 
 
 int main()
@@ -109,9 +126,10 @@ int main()
             case 3 : WithDrawBalance(); break;
             case 4 : CheckBalance();    break;
             case 5 : Details();         break;
+            case 6 : Customers();       break;
 
         }
-    }while(Choice != 6);
+    }while(Choice != 7);
 
 
 
