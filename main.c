@@ -7,9 +7,8 @@
      printf("\t\t\t--> 2  - Diposit balance\n");
      printf("\t\t\t--> 3  - WithDraw balance\n");
      printf("\t\t\t--> 4  - Check Balance\n");
-     printf("\t\t\t--> 5  - Account Holder Info's \n");
-     printf("\t\t\t--> 6  - List of The Customers(Clients)\n");
-     printf("\t\t\t--> 7 - Exit\n");
+     printf("\t\t\t--> 5  - List of The Customers(Clients)\n");
+     printf("\t\t\t--> 6 - Exit\n");
 }
 // Struct Contains what Customers Need To Create or to get into Account
 typedef   struct Customer{
@@ -39,90 +38,102 @@ typedef   struct Customer{
                 case 1 :
                 printf("How Many Account You Want to Create : ");
                 scanf("%d",&AccountNmbr);
+                printf("-----------------------------------------------------------------------------------------\n");
+                for (j=0 ; j<AccountNmbr ; i++){
                 for (i=0 ; i<AccountNmbr;i++){
                     printf("\t -First Name of account holder              : ");
                     scanf("%s",&customer[i].FirstName);
                     printf("\t -Last Name of account holder               : ");
                     scanf("%s",&customer[i].LastName);
-                    printf("\t -CIN of the account holer                  : ");
+                    printf("\t -CIN of the account holder                  : ");
                     scanf("%s",&customer[i].CIN);
                     printf("\t -Balance  to complete creation( =100 DH )  : ");
                     scanf("%f",&customer[i].Balance);
-            // Verification of Condition
-                if (customer[i] .Balance ==100){
-                    printf("\nAccount has been created successfully ! \n\n");
-                }else if(customer[i] .Balance != 100){
-                    printf("\t -Please you must pay just 100 DH ( =100 DH )   : ");
-                    scanf(" %d",&customer[i] .Balance);
-                if(customer[i].Balance = 100) {
-                    printf("\nAccount has been created successfully ! \n\n");
-                 }
+                    // Verification of Condition
+                        if (customer[i].Balance == 100){
+                            printf("\nAccount has been created successfully ! \n\n");
+                        }else if(customer[i] .Balance != 100){
+                            printf("\t -Please you must pay just 100 DH ( =100 DH )   : ");
+                            scanf(" %d",&customer[i] .Balance);
+                        if(customer[i].Balance = 100) {
+                            printf("\nAccount has been created successfully ! \n\n");
+
+                         }
+                        }
+                    printf("-----------------------------------------------------------------------\n");
                 }
+                    break;
                 }
+
 
                 break;
 
                 case 2 :
-                    printf("-->Please Enter The CIN to get The Abilitiy to :diposit Balance :");
-                    scanf(" %s",&Cheking);
-                    printf("Your PIN is %s \n ",Cheking);
-                        for (i=0 ; i<5 ; i++){
-                        if (strcmp(customer[i].CIN , Cheking)==0) {
-                            printf("\tEnter deposit amount ( DH ) :");
-                            float deposit;
-                            scanf("%f",&deposit);
-                            customer[i].Balance += deposit;
-                            printf("--> You Just Diposit %.2f DH \n",deposit);
-                            printf("--> Now You Have %.2f DH on your Account\n",customer[i].Balance);
-                            break;
-                                }else{
-                                    printf("-->CIN INVALIDE !!.go back to main Menu and try Again ! :\n");
-                                    printf("==========================================================================================\n");
-                                    break;
+
+                        for (i=0 ; i<AccountNmbr ; i++){
+                            printf("-->Please Enter The CIN to get The Abilitiy to :diposit Balance :");
+                            scanf(" %s",&Cheking);
+                            printf("Your PIN is %s \n ",Cheking);
+                            for (j=0 ; j<AccountNmbr ; j++){
+                                if (strcmp(customer[j].CIN , Cheking)==0) {
+                                printf(" %s %s \n",customer[j].FirstName,customer[j].LastName);
+                                printf("\tEnter deposit amount ( DH ) :");
+                                float deposit;
+                                scanf("%f",&deposit);
+                                customer[i].Balance += deposit;
+                                printf("--> You Just Diposit %.2f DH \n",deposit);
+                                printf("--> Now You Have %.2f DH on your Account\n\n",customer[i].Balance);
+                                }
+                            }
                         }
-                    }
-                    break;
+                                break;
                 case 3 :
-                    printf("-->Please Enter The CIN to get The Abilitiy to : WithDraw Balance :");
-                    scanf(" %s",&Cheking);
-                    printf("Your PIN is %s \n",Cheking);
-                        for (i=0 ; i<5 ; i++){
-                            if (strcmp(customer[i].CIN , Cheking)==0) {
+                     for (i=0 ; i<AccountNmbr ; i++){
+                        printf("-->Please Enter The CIN to get The Abilitiy to : WithDraw Balance :");
+                        scanf(" %s",&Cheking);
+                        printf("Your PIN is %s \n",Cheking);
+                        for (j=0 ; j<AccountNmbr ; j++){
+                            if (strcmp(customer[j].CIN , Cheking)==0) {
+                                printf(" %s %s \n",customer[j].FirstName,customer[j].LastName);
                                 printf("\tEnter WithDraw amount ( DH ) :");
                                 float WithDraw;
                                 scanf("%f",&WithDraw);
                                 customer[i].Balance -= WithDraw;
                                 printf("--> You Just Diposit %.2f DH \n",WithDraw);
                                 printf("--> Now You Have %.2f DH on your Account\n",customer[i].Balance);
-                                break;
-                            }else{
-                            printf("-->CIN INVALIDE !!.go back to main Menu and try Again ! :\n");
-                            printf("==========================================================================================\n");
+                            }
+                        }
+                     }
                             break;
-                        }
-
-                        }
                 case 4 :
-                    printf("--> Now You Have %.2f DH on your Account\n",customer[i].Balance);
+                    for (i=0 ;i<AccountNmbr ; i++){
+                     printf("--> %s %s  have %.2f DH on your Account\n",customer[i].FirstName,customer[i].LastName,customer[i].Balance);
+                    }
                     break;
 
+
                 case 5 :
-            printf("께께께께께께께께께께께께께께께께께께께께콭ccount Holder 께께께께께께께께께께께께께께께께께께께께께�\n");
-            printf("\t -First Name of account holder  : %s \n",customer[i].FirstName);
-            printf("\t -Last Name of account holder   : %s \n",customer[i].LastName);
-            printf("\t - CIN Of the Account Holder :  %s \n",customer[i].CIN);
-            printf("\t -You Have Now / Balance Amount : %.2f DH \n",customer[i].Balance);
-            printf("께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께\n");
+                    printf("\n께께께께께께께께께께께께께께께께께께께께콼ist Of Customers께께께께께께께께께께께께께께께께께께께께께�\n");
+                    for (j=0 ; j<AccountNmbr ; i++){
+                    for(i=0 ; i<AccountNmbr ; i++){
+                        printf("--> Account %d- under Name %s %s have %.2f DH\n",i+1,customer[i].FirstName,customer[i].LastName,customer[i].Balance);
+
+                    }
+                    break;
+                    }
 
 
+                    printf("께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께\n");
+                    break;
+
+            } // switch case!
+            } while (Choice != 6);
 
 
-            } // } switch case
-        }while (Choice != 6);
 
 return 0;
+}
 
 
-     }
 
 
