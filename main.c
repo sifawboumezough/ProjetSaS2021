@@ -11,7 +11,8 @@
      printf("\t\t\t--> 6  -Sorting by Ascending \n");
      printf("\t\t\t--> 7  -Sorting by Descending\n");
      printf("\t\t\t--> 8  -Search by CIN\n");
-     printf("\t\t\t--> 8  -Exit\n");
+     printf("\t\t\t--> 9  -Loyalty\n");
+     printf("\t\t\t--> 10  -Exit\n");
 }
 // Struct Contains what Customers Need To Create or to get into Account
 typedef   struct Customer{
@@ -124,7 +125,6 @@ typedef   struct Customer{
 
                 case 5 :
                     printf("\n께께께께께께께께께께께께께께께께께께께께콼ist Of Customers께께께께께께께께께께께께께께께께께께께께께�\n");
-
                     for(i=0 ; i<AccountNmbr ; i++){
                     for (j=0 ; j<AccountNmbr ; i++){
                         printf("--> Account %d- under Name %s %s have %.2f DH\n",i+1,customer[i].FirstName,customer[i].LastName,customer[i].Balance);
@@ -147,7 +147,7 @@ typedef   struct Customer{
                         }
                     }
 
-                    for (i = 0 ; i<AccountNmbr ; i++) {
+                    for (i=0 ; i<AccountNmbr ; i++) {
                         printf(" %d)- %.2f \n",i+1,customer[i].Balance);
                     }
                     printf("=================================================================================================\n");
@@ -190,10 +190,28 @@ typedef   struct Customer{
                     printf("=================================================================================================\n");
                      break;
 
-
+                case 9 :
+                    printf("=================================================================================================\n");
+                    printf("Adding 1.3 to First 3 Loyalty Clients\n");
+                    for (i=0 ; i<AccountNmbr ; i++){
+                    for (j=0 ; j<AccountNmbr ; j++){
+                        if(customer[i].Balance > customer[j].Balance){
+                            Change = customer[i].Balance;
+                            customer[i].Balance = customer[j].Balance;
+                            customer[j].Balance = Change;
+                            }
+                        }
+                    }
+                    for (i=0 ; i<3 ; i++) {
+                        customer[i].Balance += customer[i].Balance * 0.013;
+                    }
+                    printf("Pourcentage Aded successfully \n");
+                    printf("Go Back To main menu and check List of Customers");
+                    printf("=================================================================================================\n");
+                    break;
 
             } // switch case!
-            } while (Choice != 9);
+            } while (Choice != 10);
 
 
 
