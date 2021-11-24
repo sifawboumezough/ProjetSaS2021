@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
- // This Functions Contains Menu of what Customers Can Get Into it
+#include <string.h>
+ // This Functions Contains Menu of what Customers can in our service !
     void MenuPrin(){
-        printf("\t\t\t****************Menu****************\n");
+        printf("\t\t\t****************Menu********************************\n");
      printf("\t\t\t--> 1  - Create an Account\n");
      printf("\t\t\t--> 2  - Diposit balance\n");
      printf("\t\t\t--> 3  - WithDraw balance\n");
@@ -13,9 +14,10 @@
      printf("\t\t\t--> 8  -Search by CIN\n");
      printf("\t\t\t--> 9  -Loyalty\n");
      printf("\t\t\t--> 10  -Exit\n");
+        printf("\t\t\t********************welcome to our service**************************\n");
 }
-// Struct Contains what Customers Need To Create or to get into Account
-typedef   struct Customer{
+// Struct Contains what Customers Need To Create / get into Account
+typedef struct Customer{
         char FirstName[100];
         char LastName[100];        // Account info contains all elements that we need to create an account !!
         char CIN [20];
@@ -25,18 +27,19 @@ typedef   struct Customer{
 
 
      int main(){
-        customer  customer[5];
+        customer  customer[40];
         int i,j;
-        int Choice;
+        int Choice;       // customer choice --> Main Menu
         char Cheking[20]; // Check if THE CIN Is Correct or not !
         int AccountNmbr;
         int Change;
+        int Exit;
         printf("\t\t-------------------------------Welcom-------------------------------\n\n");
-        printf("\t\t\t*****************Gestion Bancaire***************** \n");
+        printf("\t\t\t*****************Bank Management***************** \n");
         printf("---------------------------------------------------------------------------------------------------\n");
         printf("\n");
         do {
-        BACK : MenuPrin();
+        MenuPrin();
         printf("--> Please What is your choice :");
         scanf("%d",&Choice);
         printf("=================================================================================================\n");
@@ -45,7 +48,6 @@ typedef   struct Customer{
                 printf("How Many Account You Want to Create : ");
                 scanf("%d",&AccountNmbr);
                 printf("-----------------------------------------------------------------------------------------\n");
-                for (j=0 ; j<AccountNmbr ; i++){
                 for (i=0 ; i<AccountNmbr;i++){
                     printf("\t -First Name of account holder              : ");
                     scanf(" %s",&customer[i].FirstName);
@@ -68,20 +70,16 @@ typedef   struct Customer{
                         }
                     printf("=================================================================================================\n");
                 }
-                    break;
-                }
-
-
                 break;
 
                 case 2 :
                         for (i=0 ; i<AccountNmbr ; i++){
                             printf("-->Please Enter The CIN to get The Abilitiy to :diposit Balance :");
                             scanf(" %s",&Cheking);
-                            printf("Your PIN is %s \n ",Cheking);
-                            for (j=0 ; j<AccountNmbr ; j++){
+                            printf("PIN is %s \n ",Cheking);
+                                for(j=0 ; j<AccountNmbr ;j++){
                                 if (strcmp(customer[j].CIN , Cheking)==0) {
-                                printf(" %s %s \n",customer[j].FirstName,customer[j].LastName);
+                                printf("-->%s %s \n",customer[j].FirstName,customer[j].LastName);
                                 printf("\tEnter deposit amount ( DH ) :");
                                 float deposit;
                                 scanf("%f",&deposit);
@@ -89,7 +87,7 @@ typedef   struct Customer{
                                 printf("--> You Just Diposit %.2f DH \n",deposit);
                                 printf("--> Now You Have %.2f DH on your Account\n\n",customer[j].Balance);
                                 }
-                            } break;
+                             }break;
                         }
                                 break;
                 case 3 :
@@ -120,10 +118,7 @@ typedef   struct Customer{
                 case 5 :
                     printf("\n께께께께께께께께께께께께께께께께께께께께콼ist Of Customers께께께께께께께께께께께께께께께께께께께께께�\n");
                     for(i=0 ; i<AccountNmbr ; i++){
-                    for (j=0 ; j<AccountNmbr ; i++){
                         printf("--> Account %d- under Name %s %s have %.2f DH\n",i+1,customer[i].FirstName,customer[i].LastName,customer[i].Balance);
-                        break;
-                    }
 
                     }
                     printf("께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께께\n");
@@ -132,7 +127,7 @@ typedef   struct Customer{
                 case 6 :
                     printf("display of the balance in ascending order :\n");
                     for (i=0 ; i<AccountNmbr ; i++){
-                    for (j=0 ; j<AccountNmbr ; j++){
+                    for (j=i+1 ; j<AccountNmbr ; j++){
                         if(customer[i].Balance > customer[j].Balance){
                             Change = customer[i].Balance;
                             customer[i].Balance = customer[j].Balance;
@@ -140,17 +135,17 @@ typedef   struct Customer{
                             }
                         }
                     }
-
                     for (i=0 ; i<AccountNmbr ; i++) {
                         printf(" %d)- %.2f \n",i+1,customer[i].Balance);
                     }
                     printf("=================================================================================================\n");
                     break;
 
+
                 case 7 :
                     printf("display of the balance in descending order\n");
                     for (i=0 ; i<AccountNmbr ; i++){
-                    for (j=0 ; j<AccountNmbr ; j++){
+                    for (j=i+1 ; j<AccountNmbr ; j++){
                         if(customer[i].Balance < customer[j].Balance){
                             Change = customer[i].Balance;
                             customer[i].Balance = customer[j].Balance;
@@ -200,10 +195,9 @@ typedef   struct Customer{
                         customer[i].Balance += customer[i].Balance * 0.013;
                     }
                     printf("Pourcentage Aded successfully \n");
-                    printf("Go Back To main menu and check List of Customers");
+                    printf("Go Back To main menu and check List of Customers\n");
                     printf("=================================================================================================\n");
                     break;
-
 
                 default :
                     printf("Your Choice Is Invalid\n");
