@@ -208,7 +208,7 @@ typedef   struct Customer{
                 default :
                     printf("Your Choice Is Invalid\n");
             } // switch case!
-            } while (Choice != 10);
+            } while (Choice != 11);
 
 
 
