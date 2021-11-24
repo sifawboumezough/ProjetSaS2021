@@ -24,26 +24,20 @@ typedef   struct Customer{
     }customer;
 
 
-
-
      int main(){
         customer  customer[5];
-        int addAccount;
         int i,j;
         int Choice;
         char Cheking[20]; // Check if THE CIN Is Correct or not !
         int AccountNmbr;
         int Change;
-
-
-
         printf("\t\t-------------------------------Welcom-------------------------------\n\n");
         printf("\t\t\t*****************Gestion Bancaire***************** \n");
         printf("---------------------------------------------------------------------------------------------------\n");
         printf("\n");
         do {
         BACK : MenuPrin();
-        printf("--> *you Need to :");
+        printf("--> Please What is your choice :");
         scanf("%d",&Choice);
         printf("=================================================================================================\n");
             switch(Choice){
@@ -54,11 +48,11 @@ typedef   struct Customer{
                 for (j=0 ; j<AccountNmbr ; i++){
                 for (i=0 ; i<AccountNmbr;i++){
                     printf("\t -First Name of account holder              : ");
-                    scanf("%s",&customer[i].FirstName);
+                    scanf(" %s",&customer[i].FirstName);
                     printf("\t -Last Name of account holder               : ");
-                    scanf("%s",&customer[i].LastName);
+                    scanf(" %s",&customer[i].LastName);
                     printf("\t -CIN of the account holder                  : ");
-                    scanf("%s",&customer[i].CIN);
+                    scanf(" %s",&customer[i].CIN);
                     printf("\t -Balance  to complete creation( =100 DH )  : ");
                     scanf("%f",&customer[i].Balance);
                     // Verification of Condition
@@ -210,6 +204,9 @@ typedef   struct Customer{
                     printf("=================================================================================================\n");
                     break;
 
+
+                default :
+                    printf("Your Choice Is Invalid\n");
             } // switch case!
             } while (Choice != 10);
 
