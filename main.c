@@ -195,14 +195,12 @@ typedef struct Customer{
                         customer[i].Balance += customer[i].Balance * 0.013;
                     }
                     printf("Pourcentage Aded successfully \n");
-                    printf("Go Back To main menu and check List of Customers\n");
+                    printf("Go Back To main menu and check List of Customers\n\n");
                     printf("=================================================================================================\n");
                     break;
 
-                default :
-                    printf("Your Choice Is Invalid\n");
             } // switch case!
-            } while (Choice != 11);
+            } while (Choice != 10);
 
 
 
